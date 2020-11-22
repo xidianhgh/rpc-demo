@@ -52,9 +52,15 @@ public class ProviderReflect {
                                         break;
                                     }
                                 }
-                                Object result = method.invoke(service, args);
+                                // ☆★☆★☆★☆★☆★☆★☆★
+                                // 使用以下反射来执行方法，需要继承接口
+//                                Object result = method.invoke(service, args);
+                                // 使用以下反射来执行方法，则不需要继承接口
+                                Method executedMethod = service.getClass().getMethod(methodName, String.class);
+                                Object invokeResult = executedMethod.invoke(new HelloProviderServiceImpl(), args);
+
                                 //将反射执行结果写入对外传输的对象流中
-                                output.writeObject(result);
+                                output.writeObject(invokeResult);
                             } catch (Throwable t) {
                                 output.writeObject(t);
                             } finally {
