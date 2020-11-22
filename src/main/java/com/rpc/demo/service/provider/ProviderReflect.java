@@ -57,7 +57,9 @@ public class ProviderReflect {
 //                                Object result = method.invoke(service, args);
                                 // 使用以下反射来执行方法，则不需要继承接口
                                 Method executedMethod = service.getClass().getMethod(methodName, String.class);
-                                Object invokeResult = executedMethod.invoke(new HelloProviderServiceImpl(), args);
+                                Object invokeResult = executedMethod.invoke(service, args);
+                                //对象也可以是以new出来的形式
+//                                Object invokeResult = executedMethod.invoke(new HelloProviderServiceImpl(), args);
 
                                 //将反射执行结果写入对外传输的对象流中
                                 output.writeObject(invokeResult);
