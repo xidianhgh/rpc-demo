@@ -1,7 +1,9 @@
 package com.rpc.demo.service.consumer;
 
+import com.rpc.demo.domain.TestBean;
+
 public interface HelloConsumerService {
 
-    String sayHello(String content);
+    TestBean sayHello(String content);
 
 }

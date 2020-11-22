@@ -1,10 +1,13 @@
 package com.rpc.demo.service.provider;
 
-import com.rpc.demo.service.HelloService;
+import com.rpc.demo.domain.TestBean;
 
-public class HelloProviderServiceImpl implements HelloService {
+public class HelloProviderServiceImpl  {
 
-    public String sayHello(String content) {
-        return "Hello," + content;
+    public TestBean sayHello(String content) {
+//        return "Hello," + content;
+        TestBean testBean=new TestBean(content,19);
+        return testBean;
+
     }
 }
